@@ -14,19 +14,34 @@ function getComputerChoice() {
     return choices[randomNumber];
 }
 
+function convertToWord(letter) {
+    if (letter === "r") return "rock";
+    if (letter === "s") return "scissors";
+    return "paper";
+}
+
 function win(userChoice, computerChoice) {
   userScore++;  
   userScoreSpan.innerHTML = userScore;
   computerScoreSpan.innerHTML = computerScore;
-  resultDiv.innerHTML = userChoice + " beats " + computerChoice + ". you win";
+  const smallUserWord = "user".fontsize(3).sup;
+  const smallCompWord = "comp".fontsize(3).sup;
+  resultDiv.innerHTML  `${convertToWord(userChoice)}${smallUserWord} beats  ${convertToWord(computerChoice)}${smallCompWord}. you win!`;
 }
 
-function lose() {
-
+function lose(userChoice, computerChoice) {
+    computerScore++;  
+    userScoreSpan.innerHTML = userScore;
+    computerScoreSpan.innerHTML = computerScore;
+    const smallUserWord = "user".fontsize(3).sup;
+    const smallCompWord = "comp".fontsize(3).sup;
+    resultDiv.innerHTML  `${convertToWord(userChoice)}${smallUserWord} loses to ${convertToWord(computerChoice)}${smallCompWord}. you lost!`;
 }
 
-function draw() {
-
+function draw(userChoice, computerChoice) {
+    const smallUserWord = "user".fontsize(3).sup;
+    const smallCompWord = "comp".fontsize(3).sup;
+    resultDiv.innerHTML  `${convertToWord(userChoice)}${smallUserWord} equals  ${convertToWord(computerChoice)}${smallCompWord}. it's a draw`;
 }
 
 function game(usercChoice) {
